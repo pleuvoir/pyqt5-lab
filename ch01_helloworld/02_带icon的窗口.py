@@ -12,7 +12,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication, QWidget
 
 current_dir = os.path.dirname(__file__)
-icon_path = os.path.join(current_dir, 'favicon.png')
+icon_path = os.path.join(current_dir, '../assets/favicon.png')
 
 
 class Example(QWidget):
@@ -23,6 +23,7 @@ class Example(QWidget):
 
     def initUI(self):
         # 设置窗口的位置和大小
+        # setGeometry()有两个作用：把窗口放到屏幕上并且设置窗口大小。参数分别代表屏幕坐标的x、y和窗口大小的宽、高。也就是说这个方法是resize()和move()的合体。
         self.setGeometry(300, 300, 300, 220)
         # 设置窗口的标题
         self.setWindowTitle('Icon')

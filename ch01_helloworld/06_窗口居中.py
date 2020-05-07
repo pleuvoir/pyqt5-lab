@@ -13,10 +13,10 @@ import sys
 
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox, QDesktopWidget
 
 current_dir = os.path.dirname(__file__)
-icon_path = os.path.join(current_dir, 'favicon.png')
+icon_path = os.path.join(current_dir, '../assets/favicon.png')
 
 
 class Example(QWidget):
@@ -30,6 +30,8 @@ class Example(QWidget):
         self.setGeometry(300, 300, 300, 220)
         # 设置窗口的标题
         self.setWindowTitle('我是标题')
+
+        self.center() #居中
         # 设置icon，我感觉这个设置只有在window下有小
         self.setWindowIcon(QIcon(icon_path))
         # 这种静态的方法设置一个用于显示工具提示的字体。我们使用10px滑体字体。
@@ -49,10 +51,16 @@ class Example(QWidget):
         # 显示窗口
         self.show()
 
+    def center(self):
+        qr = self.frameGeometry() #获得主窗口所在的框架
+        cp = QDesktopWidget().availableGeometry().center() #获取显示器的分辨率，然后得到屏幕中间点的位置
+        qr.moveCenter(cp) #获取显示器的分辨率，然后得到屏幕中间点的位置
+        self.move(qr.topLeft()) #然后通过move函数把主窗口的左上角移动到其框架的左上角，这样就把窗口居中了
+
     def closeEvent(self, event):
         print('closeEvent trigger..')
         """
-        重写关闭事件，点击时回调此方法
+        重写关闭事件，点击X时回调此方法
         """
         reply = QMessageBox.question(self, 'Message',
                                      "Are you sure to quit?", QMessageBox.Yes |
