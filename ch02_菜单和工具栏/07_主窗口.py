@@ -16,7 +16,7 @@ class Example(QMainWindow):
         textEdit = QTextEdit()  #文本编辑区域
         self.setCentralWidget(textEdit)
 
-        exitAct = QAction(QIcon('favicon.png'), 'Exit', self)
+        exitAct = QAction(QIcon('../assets/favicon.png'), 'Exit', self)
         exitAct.setShortcut('Ctrl+Q')
         exitAct.setStatusTip('Exit application')
         exitAct.triggered.connect(self.close)

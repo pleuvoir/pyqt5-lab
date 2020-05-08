@@ -17,9 +17,7 @@ class Example(QMainWindow):
 
 
     def contextMenuEvent(self, event):
-
         cmenu = QMenu(self)
-
         newAct = cmenu.addAction("New")
         opnAct = cmenu.addAction("Open")
         quitAct = cmenu.addAction("Quit")

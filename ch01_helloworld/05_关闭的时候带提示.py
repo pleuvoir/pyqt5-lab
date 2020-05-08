@@ -43,7 +43,8 @@ class Example(QWidget):
         # 关闭按钮
         qbtn = QPushButton('关闭', self)
         print('默认尺寸，',qbtn.sizeHint())
-        qbtn.clicked.connect(QCoreApplication.instance().quit) #绑定事件
+        #qbtn.clicked.connect(QCoreApplication.instance().quit) #绑定事件，不会触发event
+        qbtn.clicked.connect(self.close) #绑定事件，会触发event
         qbtn.resize(qbtn.sizeHint())
         qbtn.move(50, 50)
         # 显示窗口

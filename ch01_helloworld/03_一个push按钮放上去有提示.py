@@ -38,6 +38,7 @@ class Example(QWidget):
 
         # btn.sizeHint()显示默认尺寸
         btn.resize(btn.sizeHint())
+        btn.resize(*(72,32))
 
         # 显示窗口
         self.show()
