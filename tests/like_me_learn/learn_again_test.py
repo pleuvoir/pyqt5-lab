@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import sys
+import time
 
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QMainWindow, QApplication, qApp, QAction, QDesktopWidget
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtWidgets import QMainWindow, QApplication, qApp, QAction, QDesktopWidget, QSplashScreen
 
 
 class Example(QMainWindow):  # 继承主窗口
@@ -36,6 +38,15 @@ class Example(QMainWindow):  # 继承主窗口
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon('../assets/favicon.png'))
+
+    splash = QSplashScreen()
+    splash.setPixmap(QPixmap('../assets/likeme.gif'))
+    splash.show()
+    # splash.showMessage('小伙子，你咋又来学习了？玩游戏它不香吗？',
+    #                    Qt.AlignBottom | Qt.AlignCenter, Qt.white)
+    time.sleep(1)
+
+
     example = Example()
     example.show()
     sys.exit(app.exec_())
