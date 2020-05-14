@@ -1,37 +1,48 @@
 import sys
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QSplitter, QListView, QTreeView, QTableView, QDirModel
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 
 
-class Demo(QSplitter):  # 1
+class SplitterExample(QWidget):
     def __init__(self):
-        super(Demo, self).__init__()
-        self.dir_model = QDirModel(self)  # 2
+        super(SplitterExample, self).__init__()
+        self.initUI()
 
-        self.list_view = QListView(self)  # 3
-        self.tree_view = QTreeView(self)
-        self.table_view = QTableView(self)
-        self.list_view.setModel(self.dir_model)
-        self.tree_view.setModel(self.dir_model)
-        self.table_view.setModel(self.dir_model)
+    def initUI(self):
+        # 设置全局布局为水平布局，设置标题与初始大小窗口
+        hbox = QHBoxLayout()
+        self.setWindowTitle("QSplitter例子")
+        self.setGeometry(300, 300, 300, 200)
 
-        self.tree_view.doubleClicked.connect(self.show_func)  # 4
+        # 实例化QFrame控件
+        topLeft = QFrame()
+        topLeft.setFrameShape(QFrame.StyledPanel)
 
-        # self.setOrientation(Qt.Vertical)                      # 5 设置拆分方向，设置此属性则为上下几行的效果，默认是从左往右
-        self.addWidget(self.list_view)
-        self.addWidget(self.tree_view)
-        self.addWidget(self.table_view)
-        # self.insertWidget(0, self.table_view)
-        self.setSizes([300, 200, 200])
-        print(self.count())
+        bottom = QFrame()
+        bottom.setFrameShape(QFrame.StyledPanel)
 
-    def show_func(self, index):
-        self.list_view.setRootIndex(index)
-        self.table_view.setRootIndex(index)
+        # 实例化QSplitter控件并设置初始为水平方向布局
+        splitter1 = QSplitter(Qt.Horizontal)
+        textedit = QTextEdit()
+
+        # 向Splitter内添加控件。并设置游戏的初始大小
+        splitter1.addWidget(topLeft)
+        splitter1.addWidget(textedit)
+        splitter1.setSizes([100, 200])
+
+        # 实例化Splitter管理器，添加控件到其中，设置垂直方向
+        splitter2 = QSplitter(Qt.Vertical)
+        splitter2.addWidget(splitter1)
+        splitter2.addWidget(bottom)
+
+        # 设置窗体全局布局以及子布局的添加
+        hbox.addWidget(splitter2)
+        self.setLayout(hbox)
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    demo = Demo()
+    demo = SplitterExample()
     demo.show()
     sys.exit(app.exec_())

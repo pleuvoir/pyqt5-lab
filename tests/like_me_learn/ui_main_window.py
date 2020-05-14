@@ -1,3 +1,4 @@
+from PyQt5.QtGui import QIcon
 from qtpy import QtWidgets, QtGui, QtCore
 
 
@@ -5,7 +6,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def __init__(self):
         super().__init__()
-        # 1. set up gui windows
+        # 1. 设置窗口
         self.setGeometry(50, 50, 850, 650)
         self.setWindowTitle('Learn like me')
         self.setWindowIcon(QtGui.QIcon("source/gui/image/star.png"))
@@ -26,7 +27,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # 退出
         sysMenu.addSeparator()
-        sys_exitAction = QtWidgets.QAction('Exit', self)
+        sys_exitAction = QtWidgets.QAction(QIcon('../assets/exit.png'), 'Exit', self)
         sys_exitAction.setShortcut('Ctrl+Q')
         sys_exitAction.setStatusTip('Exit GUI')
         sys_exitAction.triggered.connect(self.close)
@@ -59,7 +60,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         hbox1.addWidget(splitter1)
 
-
         self.central_widget.addWidget(catalog_widget)
         self.central_widget.setCurrentIndex(0)
         self.setCentralWidget(self.central_widget)
+        self.setLayout(hbox1)

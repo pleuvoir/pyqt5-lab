@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import (QWidget, QPushButton,
                              QHBoxLayout, QVBoxLayout, QApplication)
 
 """
-这种应该不常用
+可参考 QT的相关介绍 https://blog.csdn.net/liang19890820/article/details/51537246
 """
 
 
@@ -22,16 +22,18 @@ class Example(QWidget):
         okButton = QPushButton("OK")
         cancelButton = QPushButton("Cancel")
 
-        hbox = QHBoxLayout()  # 将两个按钮添加到一个横着的布局中去
-        hbox.addStretch(1)  # 弹性布局？我觉得这个就是为了把它左边填充下，把按钮挤到右边去
+        hbox = QHBoxLayout()  # 将两个按钮添加到一个横着的布局中去 横着的
+        hbox.addStretch(1)  # 最左边增加，布局会靠最右
         hbox.addWidget(okButton)
         hbox.addWidget(cancelButton)
+      #  hbox.addStretch(1)  # 如果这里也增加的话，布局会居中
 
-        vbox = QVBoxLayout()  # 垂直布局
+        vbox = QVBoxLayout()  # 垂直布局 竖着的
         vbox.addStretch(1)
         vbox.addLayout(hbox)  # 将刚才的水平布局加进来
+        vbox.addStretch(1)
 
-        self.setLayout(hbox)  # 最关键的一步
+        self.setLayout(vbox)  # 最关键的一步
 
         self.setGeometry(300, 300, 300, 150)
         self.setWindowTitle('Buttons')
