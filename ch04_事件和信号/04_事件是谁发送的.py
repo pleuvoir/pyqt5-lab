@@ -21,7 +21,7 @@ class Example(QMainWindow):
         btn2.move(150, 50)
 
       #  self.statusBar().showMessage('Ready 1')
-        self.statusBar()
+        self.status_bar = self.statusBar()
         btn1.clicked.connect(self.buttonClicked)
         btn2.clicked.connect(self.buttonClicked)
 
@@ -33,7 +33,7 @@ class Example(QMainWindow):
     def buttonClicked(self):
         print('buttonClicked..')
         sender = self.sender()
-        self.statusBar().showMessage(sender.text() + ' was pressed')  # 不起作用我也不知道为啥
+        self.status_bar.showMessage(sender.text() + ' was pressed')
 
 
 if __name__ == '__main__':
