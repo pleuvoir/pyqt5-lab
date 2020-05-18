@@ -42,8 +42,8 @@ if __name__ == '__main__':
     splash = QSplashScreen()
     splash.setPixmap(QPixmap('../assets/likeme.gif'))
     splash.show()
-    # splash.showMessage('小伙子，你咋又来学习了？玩游戏它不香吗？',
-    #                    Qt.AlignBottom | Qt.AlignCenter, Qt.white)
+    splash.showMessage('小伙子，你咋又来学习了？玩游戏它不香吗？',
+                       Qt.AlignBottom | Qt.AlignCenter, Qt.white)
     time.sleep(1)
 
 
