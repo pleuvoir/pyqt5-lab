@@ -73,7 +73,7 @@ class Window(QWidget):
         self.setWindowTitle('Test') # 设置标题
         self.setWindowIcon(QIcon('./demo2.ico')) # 设置标题图标
         self.resize(300, 250) # 设置窗体大小
-        self.setFixedSize(self.width(), self.height())  # 固定窗口大小
+       # self.setFixedSize(self.width(), self.height())  # 固定窗口大小
         self.center() # 窗体屏幕居中显示
 
         # 创建托盘程序

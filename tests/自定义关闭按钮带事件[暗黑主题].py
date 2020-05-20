@@ -40,6 +40,8 @@ class Example(QWidget):
         self.cs = CloseAppSignal()
         self.cs.signal_ins.connect(self.close)
 
+       # QApplication.setQuitOnLastWindowClosed(False)  # 禁止默认的closed方法
+
         qbtn.move(50, 50)
         self.showFullScreen()
         self.show()

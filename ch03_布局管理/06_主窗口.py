@@ -29,7 +29,7 @@ class Example(QMainWindow):
         #
         # toolbar = self.addToolBar('Exit Group')
         # toolbar.addAction(exitAct)
-
+        QApplication.setQuitOnLastWindowClosed(True)  # 最后一个窗口点击关闭后不退出程序
         self.setGeometry(300, 300, 350, 250)
         self.setWindowTitle('Main window')
         self.show()
