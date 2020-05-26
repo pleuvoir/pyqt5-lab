@@ -52,10 +52,15 @@ class Example(QWidget):
         self.show()
 
     def center(self):
-        qr = self.frameGeometry() #获得主窗口所在的框架
+        qr = self.frameGeometry() #获得主窗口所在的框架 并做一个虚拟的和目前一样的窗体
+        print('qr1',qr)
         cp = QDesktopWidget().availableGeometry().center() #获取显示器的分辨率，然后得到屏幕中间点的位置
-        qr.moveCenter(cp) #获取显示器的分辨率，然后得到屏幕中间点的位置
-        self.move(qr.topLeft()) #然后通过move函数把主窗口的左上角移动到其框架的左上角，这样就把窗口居中了
+        print('cp',cp)
+        qr.moveCenter(cp)   # 将虚拟的移动过去
+        print('qr2',qr)
+        print('topLeft',qr.topLeft())
+        self.move(qr.topLeft()) #然后通过move函数把主窗口的左上角移动到虚拟框架的左上角，这样就把窗口居中了
+        print('self',self.frameGeometry())
 
     def closeEvent(self, event):
         print('closeEvent trigger..')

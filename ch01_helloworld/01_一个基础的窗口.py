@@ -14,8 +14,8 @@ if __name__ == '__main__':
 
     # QWidget部件是pyqt5所有用户界面对象的基类。他为QWidget提供默认构造函数。默认构造函数没有父类。
     w = QWidget()
-    # resize()方法调整窗口的大小。这离是3500宽150px高
-    w.resize(3500, 150)
+    # resize()方法调整窗口的大小。
+    w.resize(1550, 1041)
     # move()方法移动窗口在屏幕上的位置到x = 300，y = 300坐标。
     w.move(300, 300)
     # 设置窗口的标题
@@ -23,7 +23,11 @@ if __name__ == '__main__':
     # 显示在屏幕上
     w.show()
 
-    print(QDesktopWidget().availableGeometry().width())
+
+    print(w.geometry())
+    print(w.geometry().center()) #宽和高中间位置
+
+    print(QDesktopWidget().availableGeometry()) # PyQt5.QtCore.QRect(124, 0, 3316, 1440)
 
     # 系统exit()方法确保应用程序干净的退出
     # 的exec_()方法有下划线。因为执行是一个Python关键词。因此，exec_()代替
