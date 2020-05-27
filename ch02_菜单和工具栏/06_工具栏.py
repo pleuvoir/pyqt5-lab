@@ -20,7 +20,7 @@ class Example(QMainWindow):
         #exitAct = QAction('点我退出', self)
 
         # 用图片替换文字
-        exitAct1 = QAction(QIcon('favicon.png'), '点我退出', self)
+        exitAct1 = QAction(QIcon('assets/favicon.png'), '点我退出', self)
         exitAct1.setShortcut('Ctrl+Q')
         exitAct1.triggered.connect(qApp.quit)
 
